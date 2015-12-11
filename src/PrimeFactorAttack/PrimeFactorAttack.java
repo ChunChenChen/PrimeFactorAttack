@@ -47,6 +47,7 @@ public class PrimeFactorAttack extends JFrame implements ActionListener
   public static final int MAX_FACTORS = 10;
   public static final Color WIGET_BACKGROUND = new Color(238, 238, 238);
 
+  private int last = 6;
   private Container contentPane;
   private GameCanvas canvas;
   private Grid grid;
@@ -461,7 +462,7 @@ public class PrimeFactorAttack extends JFrame implements ActionListener
     if (Data.showHelp) Data.showHelp = false;
     curMandala = null;
     block.setZapped();
-    canvas.drawBlock(block);
+    canvas.drawBlock(block, 6);
     killCountThisLevel++;
 
     if (killCountThisLevel >= KILLCOUNT_PER_LEVEL)
@@ -885,7 +886,7 @@ public class PrimeFactorAttack extends JFrame implements ActionListener
       lastFactor = 0;
     }
     
-    canvas.drawBlock(block);
+    canvas.drawBlock(block, 6);
   }
   
   private void blockHitBottom()
@@ -906,7 +907,7 @@ public class PrimeFactorAttack extends JFrame implements ActionListener
 
 
     int row = block.getRow();
-    canvas.drawBlock(block);
+    canvas.drawBlock(block, 6);
     if (row == 0)
     {
       endGame();
@@ -936,7 +937,7 @@ public class PrimeFactorAttack extends JFrame implements ActionListener
   {
     for (Block b : deadBlocks)
     {
-      canvas.drawBlock(b);
+      canvas.drawBlock(b, 6);
     }
   }
   
@@ -1032,7 +1033,7 @@ public class PrimeFactorAttack extends JFrame implements ActionListener
       }
       while (!mandalaForDeadBlocks.update());
     }
-    canvas.drawBlock(b);
+    canvas.drawBlock(b, 6);
     if (row == grid.getHighestRow()) grid.revertToLastHighest();
     mandalaForDeadBlocks = null;
     usedSave = false;
@@ -1057,6 +1058,13 @@ public class PrimeFactorAttack extends JFrame implements ActionListener
       nextTurn();
       drawDeadBlocks();
 
+      int tmp = rand.nextInt(6);
+      if(tmp==last)
+        tmp = (last+1)%6;
+      for(int i = 0;i< deadBlocks.size();i++)
+        canvas.drawBlock(deadBlocks.get(i), tmp);
+
+      last = tmp;
       // if kill Goal is met, all blocks are destroyed
       destroyAllDeadBlocks();
 //       destroyLastDeadBlock();

@@ -168,7 +168,7 @@ public class GameCanvas extends Canvas
   }
   
   
-  public void drawBlock(Block block)
+  public void drawBlock(Block block, int randomNum)
   { 
     if (!block.isOnGround())
     { 
@@ -193,11 +193,11 @@ public class GameCanvas extends Canvas
         Data.graphTmp.drawString("-OR-   Type prime factor on keyboard." ,
             30, y+20);
       }
-      block.draw(Data.graphTmp);
+      block.draw(Data.graphTmp, 6);
     }
     else
     {
-      block.draw(Data.graphTmp);
+      block.draw(Data.graphTmp, randomNum);
     //  block.draw(Data.graph);
     //  block.draw(Data.graphSand);
     //  Data.graphTmp.drawImage(Data.imageSand, 0, 0, null);
