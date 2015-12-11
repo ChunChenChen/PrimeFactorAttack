@@ -1065,6 +1065,7 @@ public class PrimeFactorAttack extends JFrame implements ActionListener
         canvas.drawBlock(deadBlocks.get(i), tmp);
 
       last = tmp;
+
       // if kill Goal is met, all blocks are destroyed
       destroyAllDeadBlocks();
 //       destroyLastDeadBlock();

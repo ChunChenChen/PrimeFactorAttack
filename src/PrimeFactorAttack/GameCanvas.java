@@ -198,6 +198,7 @@ public class GameCanvas extends Canvas
     else
     {
       block.draw(Data.graphTmp, randomNum);
+
     //  block.draw(Data.graph);
     //  block.draw(Data.graphSand);
     //  Data.graphTmp.drawImage(Data.imageSand, 0, 0, null);

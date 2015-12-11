@@ -240,6 +240,7 @@ public class Block
         g.setColor(Color.RED);
 
       g.fillRect(left, iTop, width, height);
+
     }
     else if (mode ==MODE.REMOVE_HITS) bonusFlash(g);
     else g.setColor(BONUSBLOCK_COLOR);
